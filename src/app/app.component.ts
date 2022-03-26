@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 
+import { NotesService } from './services';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'keep-clone';
+  constructor(private notesService: NotesService) {}
 }

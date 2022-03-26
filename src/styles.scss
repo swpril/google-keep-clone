@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+@import './variables';
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  font-size: 62.5%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: $theme-gray;
+  position: relative;
+}
+
+.shadow {
+  box-shadow: 1px 1px rgba(0, 0, 0.1) !important;
+}
+
+.bg {
+  &-gray {
+    background-color: $theme-gray !important;
+  }
+
+  &-white {
+    background-color: white !important;
+  }
+}

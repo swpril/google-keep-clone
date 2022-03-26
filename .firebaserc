@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-keep-clone": {
+      "hosting": {
+        "keep-clone": [
+          "angular-keep-clone"
+        ]
+      }
+    }
+  }
+}
