@@ -1,0 +1,43 @@
+<div class="d-flex flex-column justify-content-between h-100">
+  <div mat-dialog-content>
+    <form [formGroup]="updateNote">
+      <div class="mb-3">
+        <input
+          type="text"
+          formControlName="header"
+          class="font-black text-4xl outline-none text w-100 border-0 mb-2"
+          placeholder="Title"
+        />
+      </div>
+
+      <div>
+        <textarea
+          type="text"
+          formControlName="data"
+          class="outline-none font-semi-bold w-100 m-0 border-0 text-3xl resize-none"
+          rows="10"
+          placeholder="Take a note..."
+        ></textarea>
+      </div>
+    </form>
+  </div>
+
+  <div mat-dialog-actions class="d-flex justify-content-between">
+    <button
+      mat-button
+      class="bg-gray"
+      aria-label="delete note"
+      (click)="deleteNote()"
+    >
+      <fa-icon [icon]="icons.faTrash" aria-hidden="true"></fa-icon>
+    </button>
+    <button
+      mat-button
+      class="bg-gray"
+      aria-label="update note"
+      (click)="saveNote()"
+    >
+      Done
+    </button>
+  </div>
+</div>
