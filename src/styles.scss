@@ -2,7 +2,10 @@
 
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import '../node_modules/bootstrap/dist/css/bootstrap.css';
-@import './variables';
+@import './_variables';
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@500;800&display=swap');
 
 html,
 body {
@@ -12,23 +15,130 @@ body {
 html {
   font-size: 62.5%;
 }
+
 body {
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-family: 'Overpass', sans-serif;
   background-color: $theme-gray;
   position: relative;
 }
 
-.shadow {
-  box-shadow: 1px 1px rgba(0, 0, 0.1) !important;
+/* angular material override */
+.mat-card:not([class*='mat-elevation-z']) {
+  box-shadow: none !important;
 }
 
+.mat-form-field-underline {
+  display: none !important;
+}
+
+.mat-form-field-appearance-legacy {
+  &,
+  & > * {
+    padding: 0 !important;
+  }
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label {
+  font-size: 2rem !important;
+  color: $theme-gray !important;
+}
+
+/* custom-scss */
+
+/* font-weights */
+.font {
+  &-semi-bold {
+    font-weight: 500 !important;
+  }
+  &-black {
+    font-weight: 800 !important;
+  }
+}
+
+/* font-sizes */
+.text {
+  &-3xl {
+    font-size: 1.875rem !important;
+  }
+  &-4xl {
+    font-size: 2.25rem !important;
+  }
+}
+
+/* outlines */
+.outline-none {
+  outline: none !important;
+}
+
+/* resizes */
+.resize-none {
+  resize: none !important;
+}
+
+/* cursor */
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* shadows */
+.shadow {
+  box-shadow: $shadow;
+}
+
+/* borders */
+.border {
+  &-thin-gray {
+    border: 1px solid $light-gray !important;
+  }
+
+  &-radius-8px {
+    border-radius: 8px !important;
+  }
+}
+
+/* backgrounds */
 .bg {
   &-gray {
     background-color: $theme-gray !important;
   }
-
-  &-white {
-    background-color: white !important;
+  &-green {
+    background-color: $green !important;
   }
+}
+
+/* positioning */
+.bottom-0 {
+  bottom: 0px !important;
+}
+
+.right-0 {
+  right: 0px !important;
+}
+
+/* colors */
+.text-gray {
+  color: gray !important;
+  &:hover {
+    color: black !important;
+  }
+}
+
+/* paddings and margins */
+.py-5rem {
+  padding: 5rem !important;
+}
+
+.px-2rem {
+  padding: 2rem !important;
+}
+
+/* overflows */
+.overflow-y-scroll {
+  overflow-y: scroll !important;
+}
+
+/* heights and widths */
+.h-7rem {
+  height: 7rem !important;
 }

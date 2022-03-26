@@ -1,20 +1,105 @@
-<div class="container">
-  <div class="row no-gutters">
-    <div class="col text-center py-3">
-      <img src="../assets/svg/keep-48px.svg" aria-hidden="true" />
+<div class="grid my-5">
+  <div class="g-col-12 text-center py-5">
+    <img
+      src="../assets/svg/keep-48px.svg"
+      alt="google keep logo"
+      aria-hidden="true"
+    />
+    <span aria-hidden="true">
       +
-      <img src="../assets/svg/angular-48px.svg" aria-hidden="true" />
+    </span>
+    <img
+      src="../assets/svg/angular-48px.svg"
+      alt="angular logo"
+      aria-hidden="true"
+    />
+    <span aria-hidden="true">
       +
-      <img src="../assets/svg/firebase-48px.svg" alt="" aria-hidden="true" />
-    </div>
+    </span>
+    <img
+      src="../assets/svg/firebase-48px.svg"
+      alt="firebase logo"
+      aria-hidden="true"
+    />
   </div>
 </div>
 
-<span class="d-inline-block position-absolute logo-github">
-  <img
-    src="../assets/svg/github.svg"
-    alt=""
-    aria-hidden="true"
-    style="height: 50px;width:50px;"
-  />
-</span>
+<div class="d-flex justify-content-center my-5">
+  <mat-card class="position-relative w-50 border-radius-8px">
+    <form [formGroup]="noteForm">
+      <div class="mb-3">
+        <input
+          type="text"
+          formControlName="header"
+          class="font-black text-4xl outline-none text w-100 border-0"
+          placeholder="Title"
+          (focus)="onFocus()"
+          [ngClass]="{ 'mb-2': showContent }"
+          #header
+        />
+      </div>
+
+      <div *ngIf="showContent">
+        <textarea
+          type="text"
+          formControlName="data"
+          class="outline-none font-semi-bold w-100 m-0 border-0 text-3xl resize-none"
+          rows="5"
+          placeholder="Take a note..."
+          #textarea
+        ></textarea>
+      </div>
+    </form>
+
+    <span
+      class="d-inline-block btn-cta p-2 px-3 rounded-circle position-absolute bg-green cursor-pointer"
+      aria-role="button"
+      aria-label="add note"
+      (click)="addNote()"
+    >
+      <fa-icon [icon]="icons.faPlus" class="text-white"></fa-icon>
+    </span>
+  </mat-card>
+</div>
+
+<ng-container *ngIf="notes$ | async as notes">
+  <div class="grid py-5rem px-2rem">
+    <ng-container *ngFor="let note of notes">
+      <div class="g-col-12 g-col-sm-3">
+        <mat-card class="card border-radius-8px position-relative">
+          <mat-card-title>{{ note.header }}</mat-card-title>
+          <mat-card-content>
+            <p class="overflow-y-scroll h-7rem">
+              {{ note.data }}
+            </p>
+          </mat-card-content>
+
+          <span
+            aria-label="pencil icon"
+            class="position-absolute icon-pencil cursor-pointer"
+            aria-role="button"
+            (click)="editNote(note)"
+            ><fa-icon [icon]="icons.faPencilAlt" aria-hidden="true"></fa-icon>
+          </span>
+        </mat-card>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>
+
+<footer
+  class="position-fixed d-flex align-items-center justify-content-center w-100 py-2 bottom-0 right-0"
+>
+  <a
+    href="https://www.github.com/swpril"
+    target="blank"
+    aria-label="open swpril ahuja's github profile"
+  >
+    <fa-icon
+      aria-hidden="true"
+      size="2x"
+      [icon]="icons.faGithub"
+      class="text-gray"
+    ></fa-icon>
+  </a>
+</footer>

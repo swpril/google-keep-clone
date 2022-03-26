@@ -1,5 +1,23 @@
-.logo-github {
-  top: 0;
-  right: 0;
-  transform: rotate(45deg);
+@import '../variables';
+
+.card {
+  height: 14rem;
+  &:hover {
+    box-shadow: $shadow;
+  }
+
+  & .icon-pencil {
+    display: none;
+  }
+
+  &:hover .icon-pencil {
+    display: inline;
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+.btn-cta {
+  bottom: -10px;
+  right: 10px;
 }
